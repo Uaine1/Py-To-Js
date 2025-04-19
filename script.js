@@ -129,6 +129,7 @@ function camel(){
 
 function camelToSnake(camelCase){
     let snakeCase = "";
+
     for(let upper of camelCase){
         if(upper === upper.toUpperCase()){
             snakeCase += "_" + upper.toLowerCase();
@@ -141,7 +142,71 @@ function camelToSnake(camelCase){
     if(snakeCase.startsWith("_")){
         snakeCase = snakeCase.slice(1)
     }
+    
     return snakeCase;
 }
 
 camel();
+
+// Faces - Works
+function faces(){
+    let user_input4 = window.prompt("Enter a face: ");
+    console.log(convertToFaces(user_input4));
+
+}
+
+function convertToFaces(userInput){
+    let emojized = userInput.replace(":)", "🙂").replace(":(", "🙁");
+    return emojized
+}
+
+faces();
+
+// Extensions - Minor corrections
+function extensionsJS(){
+    let user_input5 = window.prompt("Filename: ");
+    checkExtension(user_input5);
+
+}
+
+function checkExtension(userInput){
+    const imgExtensions = ["gif", "jpg", "jpeg", "png"]
+    const docExtensions = ["pdf", "txt", "zip"]
+
+    let checkingExtension = userInput.trim().toLowerCase().split(".");
+
+    if(checkingExtension.length >  1){   // ai assisted - checkingExtension.length is the proper way to check len, not length(checkingExtension)
+        let checkedExtension = checkingExtension[checkingExtension.length - 1]; //ai assisted - not checkingExtension[-1]
+
+        // ai - Checks if the file has extension
+        if(checkedExtension.length <= 1){ 
+            console.log("application/octet-stream");
+            return
+        } 
+
+        if(imgExtensions.includes(checkedExtension)){
+            if(checkedExtension === "jpg"){
+                console.log("image/jpeg");
+            }
+            else{
+                console.log(`image/${checkedExtension}`);
+            }
+        }
+        else if(docExtensions.includes(checkedExtension)){
+            if(checkingExtension === "txt"){
+                console.log("text/plain");
+            }
+            else{
+                console.log(`application/${checkedExtension}`);
+            }
+        }
+        else{
+            console.log("application/octet-stream");
+        }
+    }
+    else{
+        console.log("application/octet-stream");
+    }
+}
+
+extensionsJS();
