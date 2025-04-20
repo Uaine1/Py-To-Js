@@ -210,3 +210,136 @@ function checkExtension(userInput){
 }
 
 extensionsJS();
+
+// Fuel - Works - Minor Corrections
+
+function fuelJs(){
+    while(true){
+        let user_input6 = window.prompt("Fraction: ");
+        
+        if(user_input6.includes("/")){
+            let [x, y] = user_input6.split("/");  // multi assignment should be encased with square brackets
+            
+            // assignment as number should be here
+            x = Number(x); 
+            y = Number(y);
+
+            if(Number.isInteger(x) && Number.isInteger(y)){  // my - x.isInteger() && y.isInteger()
+                // Not here dumbass
+                try{
+                    let result = Math.round(x / y * 100);
+
+                    if(result <= 1){
+                        console.log("E");
+                        break;
+                    }
+                    else if(result >= 95){
+                        console.log("F");
+                        break;
+                    }
+                    else{
+                        console.log(`${result}%`);
+                        break;
+                    }
+                }
+                catch(err){
+                    let zeroDevisionError = Number.isInFinite(result);
+                    console.log(`${zeroDevisionError}, Cant divide with a Zero as a divisor!`);
+                }
+            }
+            else{
+                continue;
+            }
+        }
+        else{
+            continue;
+        }
+    }
+}
+
+fuelJs();
+
+// Interpreter - Doesnt Work, JS doesnt have Python's Qols
+/*  My Code
+function interpretJS(){
+    let user_input7 = window.prompt("Expression: ");
+    interpreter(user_input7);
+}
+
+function interpreter(userInput){
+    const operators = ["+", "-", "*", "/"];
+    let [x, y, z] = userInput.split();
+    x = Number(x);
+    z = Number(z);
+
+    if(operators.includes(y)){  
+        if(y === "+"){
+            console.log((x + z).toFixed(2));
+        }
+        else if( y === "-"){
+            console.log((x - z).toFixed(2));
+        }
+        else if( y === "*"){
+            console.log((x * z).toFixed(2));
+        }
+        else if( y === "/"){
+            console.log((x / z).toFixed(2));
+        }
+        else{
+            console.log("Invalid Expression")
+        }
+    }
+    else{
+        console.log("Not a number")
+    }
+}
+
+interpretJS(); */
+
+function interpretJS(){
+    let user_input7 = window.prompt("Expression: ");
+    interpreter(user_input7);
+}
+// AI 
+function interpreter(userInput) {
+    const operators = ["+", "-", "*", "/"];
+    let operatorFound = null;
+
+    // Find the operator
+    for (let op of operators) {
+        if (userInput.includes(op)) {
+            operatorFound = op;
+            break;
+        }
+    }
+
+    // If no operator found, it's invalid
+    if (!operatorFound) {
+        console.log("Invalid Expression");
+        return;
+    }
+
+    // Split the input based on the operator
+    let [x, z] = userInput.split(operatorFound);
+    x = Number(x);
+    z = Number(z);
+
+    // Check if both parts are valid numbers
+    if (Number.isNaN(x) || Number.isNaN(z)) {  // isNaN, means is a number?
+        console.log("Not a number");
+        return;
+    }
+
+    // Perform the operation
+    if (operatorFound === "+") {
+        console.log((x + z).toFixed(2));
+    } else if (operatorFound === "-") {
+        console.log((x - z).toFixed(2));
+    } else if (operatorFound === "*") {
+        console.log((x * z).toFixed(2));
+    } else if (operatorFound === "/") {
+        console.log((x / z).toFixed(2));
+    }
+}
+
+interpretJS();
