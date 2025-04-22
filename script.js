@@ -343,3 +343,29 @@ function interpreter(userInput) {
 }
 
 interpretJS();
+
+// Meal - Minor minor corrections from ai 
+function mealJS(){
+    let user_input8 = window.prompt("What time is it?");
+    let time = checkMealtime(user_input8);
+
+    if(time < 8.0){
+        console.log("Breakfast");
+    }
+    else if(time >= 8.0 && time < 14.0){  // 8.0 <= time < 14.0 - JS doesnt support chained comparisons
+        console.log("Lunch");
+    }
+    else if(time >= 14.0 && time < 19.0){ // 14.0 <= time < 19.0
+        console.log("Dinner");
+    }
+    else{
+        console.log("Late Night Snack");
+    }
+}
+
+function checkMealtime(userInput){
+    let [hrs, mins] = userInput.split(":").map(Number);  // My - userInput.map(int, userInput.split(:)) which is wrong in JS context
+    return hrs + mins / 60;
+}
+
+mealJS();
