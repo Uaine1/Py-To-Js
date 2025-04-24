@@ -369,3 +369,36 @@ function checkMealtime(userInput){
 }
 
 mealJS();
+
+//Indoor - Works
+
+function indoorJS(){
+    let user_input9 = window.prompt("Enter something");
+    console.log(user_input9.toLowerCase());
+}
+
+indoorJS();
+
+// Nutrition
+function nutritionJs(){
+    let user_input10 = window.prompt("Enter a fruit name:");
+    checkNutrition(user_input10);
+
+}
+function checkNutrition(userInput){
+    const fruits = {
+        "apple": 130, "avocado": 50, "banana": 110, "cantaloupe": 50,
+        "grapefruit": 60, "grapes": 90, " honeydew melon": 50,
+        "kiwifruit": 90, "lemon": 15, "lime": 20, "nectarine": 60,
+        "orange": 80, "peach": 60, "pear": 100, "pineapple": 50,
+        "plums": 70, "strawberries": 50, "sweet cherries": 100,
+        "tangerine": 50, "watermelon": 80
+        };
+
+    userInput = userInput.toLowerCase();
+    if(userInput in fruits){    // .includes() if for strings or array not obj, so we can use "in" here.
+        console.log(`Calories: ${fruits[userInput]}`);
+    }
+}
+
+nutritionJs();
