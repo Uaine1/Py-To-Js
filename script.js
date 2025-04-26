@@ -402,3 +402,48 @@ function checkNutrition(userInput){
 }
 
 nutritionJs();
+
+// Playback - Works
+function playbackJS(){
+    let user_input11 = window.prompt("").replaceAll(" ", "...");
+    console.log(user_input11);
+}
+playbackJS();
+
+// Taqueria
+function taqueriaJS(){
+    const menu = {
+        "Baja Taco": 4.25,
+        "Burrito": 7.50,
+        "Bowl": 8.50,
+        "Nachos": 11.00,
+        "Quesadilla": 8.50,
+        "Super Burrito": 8.50,
+        "Super Quesadilla": 9.50,
+        "Taco": 3.00,
+        "Tortilla Salad": 8.00
+    }
+
+    totalPrice = 0;
+   
+    let run = true;
+    while(run){
+        try{
+            let user_input12 = window.prompt("What is your order? ")
+            if(user_input12 in menu){
+                totalPrice += menu[user_input12];
+                console.log(`Total: ${totalPrice.toFixed(2)}`);
+            }
+            else if(user_input12 === "ok"){
+                run = false;
+            }
+            else{
+                console.log("Items is not on the menu");
+            }
+        }
+        catch(err){
+            console.log("Items is not on the menu");
+        }
+    }
+}
+taqueriaJS();
