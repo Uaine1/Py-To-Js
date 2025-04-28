@@ -447,3 +447,77 @@ function taqueriaJS(){
     }
 }
 taqueriaJS();
+
+// Game
+
+// My Code - didnt work
+/*
+function gameJs(){
+    while(true){
+        try{
+            let user_input13 = window.prompt("Level:");
+            user_input13 = Number(user_input13);
+            if(user_input13 <= 0){
+                continue
+            }
+            let targetNum = Math.random(1, user_input13);
+
+            while(true){
+                try{
+                    let userGuess = window.prompt("Guess: ");
+                    userGuess = Number(userGuess);
+
+                    if(userGuess < targetNum){
+                        console.log("Too small");
+                    }
+                    else if(userGuess > targetNum){
+                        console.log("Too large");
+                    }
+                    else if(userGuess === targetNum){
+                        console.log("Just right");
+                        break;
+                    }
+                }
+                catch(err){
+                    if(Number.isNaN(user_input13) || Number.isNaN(userGuess)){
+                        continue;
+                    }
+                }
+            }
+        }
+        catch(err){
+            if(Number.isNaN(user_input13) || Number.isNaN(userGuess)){
+                continue;
+            }
+    }
+}
+
+gameJs(); */
+
+// Ai - Here it doesnt user try catch
+function gameJs() {
+    while (true) {
+        let user_input13 = Number(window.prompt("Level:")); // I guess we can do that too in JS, instead of rewriting and assigning the variable much later
+        if (Number.isNaN(user_input13) || user_input13 <= 0) { // should have put the Nan after the input
+            continue;
+        }
+
+        let targetNum = Math.floor(Math.random() * user_input13) + 1;
+
+        while (true) {
+            let userGuess = Number(window.prompt("Guess:"));
+            if (Number.isNaN(userGuess)) continue; // should have put the Nan after the input, we can also do a oneliner in JS too?
+
+            if (userGuess < targetNum) {
+                console.log("Too small");
+            } else if (userGuess > targetNum) {
+                console.log("Too large");
+            } else {
+                console.log("Just right");
+                return; // end the game
+            }
+        }
+    }
+}
+
+gameJs();
