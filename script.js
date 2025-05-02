@@ -521,3 +521,37 @@ function gameJs() {
 }
 
 gameJs();
+
+// Tip - Works 100%
+
+function tipJS(){
+    let dollars = tipCalcu.dollarToFloat(Number(window.prompt("How much was the meal? ")));
+    let percent = tipCalcu.percentageToFloat(Number(window.prompt("What percentage would you like to tip? ")));
+    console.log(`Leave ${(dollars * percent).toFixed(2)}`)
+}
+
+//Method
+const tipCalcu = {
+    dollarToFloat: function(userInput){
+        let floated = Math.floor(userInput);
+        return floated
+    },
+
+    percentageToFloat: function(userInput){
+        let floated = Math.floor(userInput);
+        return floated
+    }
+}
+
+/* Function
+function dollarToFloat(userInput){
+    let floated = Math.floor(userInput.replace("$", ""));
+    return floated
+}
+
+function percentageToFloat(userInput){
+    let floated = Math.floor(userInput.replace("%", ""));
+    return floated
+}
+    */
+tipJS();
